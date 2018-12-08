@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Helmet} from 'react-helmet'
+import Helmet,{ HelmetProvider  } from 'react-helmet-async'
 import './app.css'
 import './todo.css'
 
@@ -58,10 +58,12 @@ class ToDoList extends Component{
        
         return(
             <div className="taskMain">
-                <Helmet>
-                    <title>Todo List App | React Lab</title>
-                    <meta name="description" content="Simple App to add delet lists" />
-                </Helmet>
+                <HelmetProvider>
+                    <Helmet>
+                        <title>Todo List App | React Lab</title>
+                        <meta name="description" content="Simple App to add delete lists" />
+                    </Helmet>
+                </HelmetProvider>
                 <form onSubmit={this.taskSubmit} autoComplete='off'>
                     <input className="taskInput" type="text" name="tasktext"  placeholder="Enter your Task Here" />
                 </form>

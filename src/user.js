@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import {Helmet} from 'react-helmet'
+import Helmet,{ HelmetProvider  } from 'react-helmet-async'
 
 class User extends Component{
     render(){
@@ -7,10 +7,12 @@ class User extends Component{
         const user = this.props.userData[id]
         return(
             <>
-                <Helmet>
-                    <title>{user.name} | React Lab</title>
-                    <meta name="description" content={user.description} />
-                </Helmet>
+                <HelmetProvider>
+                    <Helmet>
+                        <title>{user.name} | React Lab</title>
+                        <meta name="description" content={user.description} />
+                    </Helmet>
+                </HelmetProvider>
                 <img src={user.url} />
                 <h3>{user.name}</h3>
                 <p>{user.description}</p>

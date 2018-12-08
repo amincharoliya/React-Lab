@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Helmet} from 'react-helmet'
+import Helmet,{ HelmetProvider  } from 'react-helmet-async'
 
 class Home extends Component{
     constructor(props){
@@ -39,10 +39,12 @@ class Home extends Component{
     render(props) {
         return(
             <div>
-                <Helmet>
-                    <title>Welcome to React Lab!</title>
-                    <meta name="description" content="Find cool apps developed with react." />
-                </Helmet>
+                <HelmetProvider>
+                    <Helmet>
+                        <title>Welcome to React Lab!</title>
+                        <meta name="description" content="Find cool apps developed with react." />
+                    </Helmet>
+                </HelmetProvider>
 
                 <h1>Hello {this.props.name}!</h1>
                 <p className={this.state.timer ? 'true' : 'false'}>Time is {this.state.date.toLocaleTimeString()}</p>

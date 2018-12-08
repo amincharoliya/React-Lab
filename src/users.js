@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import {Helmet} from 'react-helmet'
+import Helmet,{ HelmetProvider  } from 'react-helmet-async'
 
 const Users = (props) => {   
     const usersList =  props.userData.map(user => {
@@ -15,10 +15,12 @@ const Users = (props) => {
     });
     return(
         <>
-        <Helmet>
-            <title>User List | React Lab</title>
-            <meta name="description" content="List of users fetched from parent Component." />
-        </Helmet>
+        <HelmetProvider>
+            <Helmet>
+                <title>User List | React Lab</title>
+                <meta name="description" content="List of users fetched from parent Component." />
+            </Helmet>
+        </HelmetProvider>
         <ul>
             {usersList}
         </ul>

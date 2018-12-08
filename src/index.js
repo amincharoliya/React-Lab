@@ -11,13 +11,13 @@ import Nav from './navigation.js'
 import Users from './users'
 import User from './user'
 
-class App extends Component {
+class App extends Component { 
     render(){
         const users = [
             {id: 1, name: 'Mark', description: 'Mark is UI Designer with over 10 years of experience in the industry.Lorem Impsum simple dummy text.', url:'https://picsum.photos/100/101'},
             {id: 2, name: 'Jeff', description: 'Jeff is UI Designer with over 10 years of experience in the industry.Lorem Impsum simple dummy text.', url:'https://picsum.photos/101/100'},
             {id: 3, name: 'Eric', description: 'Eric is UI Designer with over 10 years of experience in the industry.Lorem Impsum simple dummy text.', url:'https://picsum.photos/99/100'},
-            {id: 4, name: 'Philip',description: 'Philip is UI Designer with over 10 years of experience in the industry.Lorem Impsum simple dummy text.', url:'https://picsum.photos/100/99'}
+            {id: 4, name: 'Philips',description: 'Philip is UI Designer with over 10 years of experience in the industry.Lorem Impsum simple dummy text.', url:'https://picsum.photos/100/99'}
         ];
         return(
             <Router>
