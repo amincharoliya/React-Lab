@@ -9,6 +9,7 @@ class ToDoList extends Component{
         this.state = {tasks: ['Demo Task'], checkedAll : false};
         this.taskSubmit = this.taskSubmit.bind(this)
         this.deleteTask = this.deleteTask.bind(this)
+        this.deleteAll = this.deleteAll.bind(this)
     }
 
     //Add a new task
@@ -19,7 +20,8 @@ class ToDoList extends Component{
                 tasks : [...this.state.tasks,inputValue]
             });
             document.querySelector('.taskInput').value = '';
-            console.log(this.state.tasks)
+            // console.log(this.state.tasks)
+            this.checkTask = this.checkTask.bind(this)
         }else{
             if(inputValue === ''){
                 alert('Task name can not be blank!')
@@ -32,29 +34,36 @@ class ToDoList extends Component{
 
     //Delet task
     deleteTask(index){
-        // this.state.tasks.splice(index,1);
+        const taskName = index.target.parentNode.innerText.replace('Delete','');
+        console.log(taskName);
+        const newTasks = this.state.tasks.filter((i)=> {return i !== taskName});
+        console.log(newTasks);
+        this.setState({
+            tasks : newTasks
+        });
     }
 
     //Check clicked task
-    checkTask(){
-        this.setState({
-
-        })
+    checkTask(i){
+        i.target.classList.toggle('checked');
     }
-    //Check all tasks
-    checkAll(){
+    //To delete All the tasks
+    deleteAll(){
         this.setState({
-            checkedAll : !this.state.checkedAll
+            tasks : ''
         })
     }
     
     render() {
-        const taskItems = this.state.tasks.map((task, index)=> {
-            return <li className={this.state.checkedAll ? 'checked' : 'unchecked'} key={index} onClick={this.checkTask.bind(this)} >
-                <span>Delete</span>
-                {task}
-            </li>
-        })
+        if(this.state.tasks){
+            var taskItems = this.state.tasks.map((task, index)=> {
+                let mtask = <li className={this.state.checkedAll ? 'checked' : 'unchecked'} key={index} onClick={this.checkTask} >
+                    <span onClick={this.deleteTask}>Delete</span>
+                    {task}
+                </li>;
+                return mtask;
+            });
+        }
        
         return(
             <div className="taskMain">
@@ -71,7 +80,7 @@ class ToDoList extends Component{
                 <ul className="tasks">
                 {taskItems}
                 </ul>
-                <button className="dark-button" onClick={this.checkAll.bind(this)}>{this.state.checkedAll ? 'Uncheck All' : 'Check All'}</button>
+                <button className="dark-button" onClick={this.deleteAll}>Delete All</button>
             </div>
         );
     }
