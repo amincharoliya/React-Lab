@@ -22,7 +22,7 @@ const Users = (props) => {
             </Helmet>
         </HelmetProvider>
         <ul>
-            {usersList}
+            {usersList} 
         </ul>
         </>
     )
