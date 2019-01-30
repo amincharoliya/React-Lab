@@ -14,7 +14,7 @@ const Users = (props) => {
         )         
     });
     return(
-        <>
+        <div>
         <HelmetProvider>
             <Helmet>
                 <title>User List | React Lab</title>
@@ -24,7 +24,7 @@ const Users = (props) => {
         <ul>
             {usersList} 
         </ul>
-        </>
+        </div>
     )
 }
 
