@@ -13,7 +13,7 @@ class User extends Component{
                         <meta name="description" content={user.description} />
                     </Helmet>
                 </HelmetProvider>
-                <img src={user.url} />
+                <img src={user.url} alt={user.name}/>
                 <h3>{user.name}</h3>
                 <p>{user.description}</p>
             </>
